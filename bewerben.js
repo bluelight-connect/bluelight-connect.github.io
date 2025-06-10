@@ -1,5 +1,5 @@
 // Trage hier deine Discord Webhook-URL ein
-const webhookURL = "DEIN_WEBHOOK_URL_HIER_EINFÜGEN";
+const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
 
 document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
   e.preventDefault();
