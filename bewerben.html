@@ -55,14 +55,17 @@
   <h1>🚒 Bewerbung bei Bluelight Connect</h1>
 
   <form id="bewerbungForm">
-    <label for="name">Dein Name (Ingame oder Discord):</label>
-    <input type="text" name="name" id="name" required>
+      <label for="spielname">Wie heißt das zugehörige Roblox-Spiel?</label>
+      <input type="text" id="spielname" name="spielname" required>
 
-    <label for="motivation">Warum willst du Teil der Community sein?</label>
-    <textarea name="motivation" id="motivation" rows="4" required></textarea>
+      <label for="spiellink">Link zum Roblox-Spiel:</label>
+      <input type="url" id="spiellink" name="spiellink" required>
 
-    <label for="erfahrung">Was bringst du mit?</label>
-    <textarea name="erfahrung" id="erfahrung" rows="3"></textarea>
+      <label for="discordlink">Link zum Discord-Server:</label>
+      <input type="url" id="discordlink" name="discordlink" required>
+
+      <label for="verantwortlich">Wer ist die hauptverantwortliche Person für das Game?</label>
+      <input type="text" id="verantwortlich" name="verantwortlich" required>
 
     <button type="submit">Absenden</button>
   </form>
@@ -73,9 +76,10 @@
     document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const name = this.name.value.trim();
-      const motivation = this.motivation.value.trim();
-      const erfahrung = this.erfahrung.value.trim();
+      const spielname = this.spielname.value.trim();
+      const spiellink = this.spiellink.value.trim();
+      const discordlink = this.discordlink.value.trim();
+      const verantwortlich = this.verantwortlich.value.trim();
 
       if (!name || !motivation) {
         alert("Bitte fülle alle Pflichtfelder aus.");
@@ -83,11 +87,15 @@
       }
 
       const payload = {
-        content: `📥 **Neue Bewerbung eingegangen!**
+  content: `📥 **Neue Bewerbung eingegangen!**
 **👤 Name:** ${name}
 **📝 Motivation:** ${motivation}
-**🔧 Erfahrung:** ${erfahrung || "Keine Angabe"}`
-      };
+**🔧 Erfahrung:** ${erfahrung || "Keine Angabe"}
+**🎮 Roblox-Spiel:** ${spielname}
+**🔗 Spiel-Link:** ${spiellink}
+**💬 Discord:** ${discordlink}
+**👑 Ansprechpartner:** ${verantwortlich}`
+};
 
       fetch(webhookURL, {
         method: "POST",
