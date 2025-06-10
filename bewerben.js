@@ -15,8 +15,8 @@ document.getElementById("bewerbungForm").addEventListener("submit", function(e) 
   const eigenschaften = this.eigenschaften.value.trim();
   const region = this.region.value.trim();
   const zielgruppen = this.zielgruppen.value.trim();
-  const besonderheit = this.besonderheit.value.trim(); // ← "besonderheit" war vorher falsch
-  const mitgliederanzahl = this.mitgliederanzahl.value.trim(); // ← "mitliederanzahl" war falsch geschrieben
+  const besonderheit = this.besonderheit.value.trim();
+  const mitgliederanzahl = this.mitgliederanzahl.value.trim();
   const social = this.social.value.trim();
   const beschreibung = this.beschreibung.value.trim();
 
