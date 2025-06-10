@@ -1,82 +1,30 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>Jetzt Bewerben – Bluelight Connect</title>
-  <style>
-    body {
-      background-color: #0f172a;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 40px;
-    }
-    h1 { color: #38bdf8; }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-    }
-    input, textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-    }
-    button {
-      padding: 12px;
-      background-color: #38bdf8;
-      color: black;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1>🚒 Bewerbung – Bluelight Connect</h1>
-  <form id="bewerbungForm">
-    <label>Dein Name (Ingame oder Discord):</label>
-    <input type="text" name="name" required>
+<script>
+  const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
 
-    <label>Warum willst du Teil der Community sein?</label>
-    <textarea name="motivation" rows="4" required></textarea>
+  document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    <label>Was bringst du mit?</label>
-    <textarea name="erfahrung" rows="3"></textarea>
+    const name = this.name.value;
+    const motivation = this.motivation.value;
+    const erfahrung = this.erfahrung.value;
 
-    <button type="submit">Absenden</button>
-  </form>
-
-  <script>
-    const webhookURL = "DEIN_DISCORD_WEBHOOK_LINK_HIER_EINFÜGEN";
-
-    document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const name = this.name.value;
-      const motivation = this.motivation.value;
-      const erfahrung = this.erfahrung.value;
-
-      const payload = {
-        content: `📥 **Neue Bewerbung eingegangen!**
+    const payload = {
+      content: `📥 **Neue Bewerbung eingegangen!**
 **👤 Name:** ${name}
 **📝 Motivation:** ${motivation}
 **🔧 Erfahrung:** ${erfahrung}`
-      };
+    };
 
-      fetch(webhookURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }).then(() => {
-        alert("✅ Bewerbung erfolgreich gesendet!");
-        this.reset();
-      }).catch(() => {
-        alert("❌ Fehler beim Senden. Bitte später erneut versuchen.");
-      });
+    fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      alert("✅ Bewerbung erfolgreich gesendet!");
+      this.reset();
+    }).catch(() => {
+      alert("❌ Fehler beim Senden. Bitte später erneut versuchen.");
     });
-  </script>
-</body>
-</html>
+  });
+</script>
+
