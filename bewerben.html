@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Jetzt Bewerben – Bluelight Connect</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+    h1 {
+      color: #38bdf8;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px;
+      background-color: #38bdf8;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚒 Bewerbung – Bluelight Connect</h1>
+  <form action="https://formspree.io/f/xyourformid" method="POST">
+    <label>Dein Name (Ingame oder Discord):</label>
+    <input type="text" name="name" required>
 
+    <label>Warum willst du Teil der Community sein?</label>
+    <textarea name="motivation" rows="5" required></textarea>
+
+    <label>Was bringst du mit (Erfahrung etc.)?</label>
+    <textarea name="erfahrung" rows="4"></textarea>
+
+    <button type="submit">Bewerbung abschicken</button>
+  </form>
+</body>
+</html>
