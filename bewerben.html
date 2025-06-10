@@ -10,9 +10,7 @@
       font-family: Arial, sans-serif;
       padding: 40px;
     }
-    h1 {
-      color: #38bdf8;
-    }
+    h1 { color: #38bdf8; }
     form {
       display: flex;
       flex-direction: column;
@@ -38,17 +36,47 @@
 </head>
 <body>
   <h1>🚒 Bewerbung – Bluelight Connect</h1>
-  <form action="https://formspree.io/f/xyourformid" method="POST">
+  <form id="bewerbungForm">
     <label>Dein Name (Ingame oder Discord):</label>
     <input type="text" name="name" required>
 
     <label>Warum willst du Teil der Community sein?</label>
-    <textarea name="motivation" rows="5" required></textarea>
+    <textarea name="motivation" rows="4" required></textarea>
 
-    <label>Was bringst du mit (Erfahrung etc.)?</label>
-    <textarea name="erfahrung" rows="4"></textarea>
+    <label>Was bringst du mit?</label>
+    <textarea name="erfahrung" rows="3"></textarea>
 
-    <button type="submit">Bewerbung abschicken</button>
+    <button type="submit">Absenden</button>
   </form>
+
+  <script>
+    const webhookURL = "DEIN_DISCORD_WEBHOOK_LINK_HIER_EINFÜGEN";
+
+    document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = this.name.value;
+      const motivation = this.motivation.value;
+      const erfahrung = this.erfahrung.value;
+
+      const payload = {
+        content: `📥 **Neue Bewerbung eingegangen!**
+**👤 Name:** ${name}
+**📝 Motivation:** ${motivation}
+**🔧 Erfahrung:** ${erfahrung}`
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        alert("✅ Bewerbung erfolgreich gesendet!");
+        this.reset();
+      }).catch(() => {
+        alert("❌ Fehler beim Senden. Bitte später erneut versuchen.");
+      });
+    });
+  </script>
 </body>
 </html>
