@@ -1,30 +1,111 @@
-<script>
-  const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Jetzt Bewerben – Bluelight Connect</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
 
-  document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
 
-    const name = this.name.value;
-    const motivation = this.motivation.value;
-    const erfahrung = this.erfahrung.value;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+    }
 
-    const payload = {
-      content: `📥 **Neue Bewerbung eingegangen!**
+    label {
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #38bdf8;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0ea5e9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚒 Bewerbung – Bluelight Connect</h1>
+
+  <form id="bewerbungForm">
+    <label for="name">Dein Name (Ingame oder Discord):</label>
+    <input type="text" name="name" id="name" required>
+
+    <label for="motivation">Warum willst du Teil der Community sein?</label>
+    <textarea name="motivation" id="motivation" rows="4" required></textarea>
+
+    <label for="erfahrung">Was bringst du mit?</label>
+    <textarea name="erfahrung" id="erfahrung" rows="3"></textarea>
+
+    <button type="submit">Absenden</button>
+  </form>
+
+  <script>
+    const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
+
+    document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = this.name.value.trim();
+      const motivation = this.motivation.value.trim();
+      const erfahrung = this.erfahrung.value.trim();
+
+      if (!name || !motivation) {
+        alert("Bitte fülle alle Pflichtfelder aus.");
+        return;
+      }
+
+      const payload = {
+        content: `📥 **Neue Bewerbung eingegangen!**
 **👤 Name:** ${name}
 **📝 Motivation:** ${motivation}
-**🔧 Erfahrung:** ${erfahrung}`
-    };
+**🔧 Erfahrung:** ${erfahrung || "Keine Angabe"}`
+      };
 
-    fetch(webhookURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    }).then(() => {
-      alert("✅ Bewerbung erfolgreich gesendet!");
-      this.reset();
-    }).catch(() => {
-      alert("❌ Fehler beim Senden. Bitte später erneut versuchen.");
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        alert("✅ Bewerbung erfolgreich gesendet!");
+        this.reset();
+      })
+      .catch(() => {
+        alert("❌ Fehler beim Senden. Bitte versuche es später erneut.");
+      });
     });
-  });
-</script>
+  </script>
+
+</body>
+</html>
+
 
