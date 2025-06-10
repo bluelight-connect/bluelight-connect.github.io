@@ -4,35 +4,43 @@ const webhookURL = "DEIN_WEBHOOK_URL_HIER_EINFÜGEN";
 document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  // Formulardaten einsammeln
-  const name = this.name.value.trim();
-  const motivation = this.motivation.value.trim();
-  const erfahrung = this.erfahrung.value.trim();
-  const spielname = this.spielname.value.trim();
-  const spiellinkCode = this.spiellink.value.trim();
-  const discordCode = this.discordlink.value.trim();
-  const verantwortlich = this.verantwortlich.value.trim();
+  // Formular Seite 1
+  const gamename = this.gamename.value.trim();
+  const gamelink = this.spiellink.value.trim();
+  const discordlink = this.discordlink.value.trim();
+  const ansprecher = this.ansprecher.value.trim();
+
+  // Formular Seite 2
+  const zeit = this.zeit.value.trim();
+  const eigenschaften = this.eigenschaften.value.trim();
+  const region = this.region.value.trim();
+  const zielgruppen = this.zielgruppen.value.trim();
+  const besonderheit = this.besonderheit.value.trim(); // ← "besonderheit" war vorher falsch
+  const mitgliederanzahl = this.mitgliederanzahl.value.trim(); // ← "mitliederanzahl" war falsch geschrieben
+  const social = this.social.value.trim();
+  const beschreibung = this.beschreibung.value.trim();
 
   // Pflichtfelder prüfen
-  if (!name || !motivation || !spielname || !spiellinkCode || !discordCode || !verantwortlich) {
+  if (!gamename || !gamelink || !discordlink || !ansprecher || !zeit || !eigenschaften || !region || !zielgruppen || !besonderheit || !mitgliederanzahl || !social || !beschreibung) {
     alert("Bitte fülle alle Pflichtfelder aus.");
     return;
   }
 
-  // Roblox- und Discord-Link zusammensetzen
-  const robloxURL = `https://www.roblox.com/de/games/${spiellinkCode}`;
-  const discordURL = `https://discord.gg/${discordCode}`;
-
   // Discord-Nachricht vorbereiten
   const payload = {
     content: `📥 **Neue Bewerbung eingegangen!**
-**👤 Name:** ${name}
-**📝 Motivation:** ${motivation}
-**🔧 Erfahrung:** ${erfahrung || "Keine Angabe"}
-**🎮 Roblox-Spiel:** ${spielname}
-**🔗 Roblox-Link:** ${robloxURL}
-**💬 Discord:** ${discordURL}
-**👑 Verantwortlich:** ${verantwortlich}`
+**🎮 Spiel:** ${gamename}
+**🔗 Spiellink:** https://www.roblox.com/de/games/${gamelink}
+**💬 Discord:** https://discord.gg/${discordlink}
+**👤 Ansprechpartner:** ${ansprecher}
+**🕒 Erscheinung:** ${zeit}
+**✨ Eigenschaften:** ${eigenschaften}
+**🌍 Region:** ${region}
+**🎯 Zielgruppen:** ${zielgruppen}
+**🌟 Besonderheiten:** ${besonderheit}
+**👥 Mitgliederanzahl:** ${mitgliederanzahl}
+**📱 Social Media:** ${social}
+**📝 Beschreibung:** ${beschreibung}`
   };
 
   // An Discord senden
@@ -40,12 +48,10 @@ document.getElementById("bewerbungForm").addEventListener("submit", function(e) 
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
-  })
-  .then(() => {
+  }).then(() => {
     alert("✅ Bewerbung erfolgreich gesendet!");
     this.reset();
-  })
-  .catch(() => {
-    alert("❌ Fehler beim Senden. Bitte versuche es später erneut.");
+  }).catch(() => {
+    alert("❌ Fehler beim Senden an Discord.");
   });
 });
