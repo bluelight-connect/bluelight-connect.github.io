@@ -29,18 +29,18 @@ document.getElementById("bewerbungForm").addEventListener("submit", function(e) 
   // Discord-Nachricht vorbereiten
   const payload = {
     content: `📥 **Neue Bewerbung eingegangen!**
-**🎮 Spiel:** ${gamename}
-**🔗 Spiellink:** https://www.roblox.com/de/games/${gamelink}
-**💬 Discord:** https://discord.gg/${discordlink}
-**👤 Ansprechpartner:** ${ansprecher}
-**🕒 Erscheinung:** ${zeit}
-**✨ Eigenschaften:** ${eigenschaften}
-**🌍 Region:** ${region}
-**🎯 Zielgruppen:** ${zielgruppen}
-**🌟 Besonderheiten:** ${besonderheit}
-**👥 Mitgliederanzahl:** ${mitgliederanzahl}
-**📱 Social Media:** ${social}
-**📝 Beschreibung:** ${beschreibung}`
+Spielname: ${gamename}
+Spiellink: ${gamelink}
+Discord: ${discordlink}
+Ansprechpartner: ${ansprecher}
+Erscheinung: ${zeit}
+Eigenschaften: ${eigenschaften}
+Region: ${region}
+Zielgruppen: ${zielgruppen}
+Besonderheiten: ${besonderheit}
+Mitgliederanzahl: ${mitgliederanzahl}
+Social Media: ${social}
+Beschreibung: ${beschreibung}`
   };
 
   // An Discord senden
