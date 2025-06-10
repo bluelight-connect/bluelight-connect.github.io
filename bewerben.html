@@ -2,115 +2,38 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Jetzt bewerben – Bluelight Connect</title>
-  <style>
-    body {
-      background-color: #0f172a;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 40px;
-    }
-
-    h1 {
-      color: #38bdf8;
-    }
-
-    form {
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 12px;
-      background-color: #38bdf8;
-      color: black;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0ea5e9;
-    }
-  </style>
+  <title>Bewerbung – Bluelight Connect</title>
+  <link rel="stylesheet" href="style/bewerben.css">
 </head>
 <body>
 
   <h1>🚒 Bewerbung bei Bluelight Connect</h1>
 
   <form id="bewerbungForm">
-      <label for="spielname">Wie heißt das zugehörige Roblox-Spiel?</label>
-      <input type="text" id="spielname" name="spielname" required>
+    <label for="name">Dein Name (Ingame oder Discord):</label>
+    <input type="text" name="name" id="name" required>
 
-      <label for="spiellink">Link zum Roblox-Spiel:</label>
-      <input type="url" id="spiellink" name="spiellink" required>
+    <label for="motivation">Warum willst du Teil der Community sein?</label>
+    <textarea name="motivation" id="motivation" rows="4" required></textarea>
 
-      <label for="discordlink">Link zum Discord-Server:</label>
-      <input type="url" id="discordlink" name="discordlink" required>
+    <label for="erfahrung">Was bringst du mit?</label>
+    <textarea name="erfahrung" id="erfahrung" rows="3"></textarea>
 
-      <label for="verantwortlich">Wer ist die hauptverantwortliche Person für das Game?</label>
-      <input type="text" id="verantwortlich" name="verantwortlich" required>
+    <label for="spielname">Wie heißt das zugehörige Roblox-Spiel?</label>
+    <input type="text" id="spielname" name="spielname" required>
+
+    <label for="spiellink">Spielcode (z. B. 1234567890):</label>
+    <input type="text" id="spiellink" name="spiellink" required>
+
+    <label for="discordlink">Discord-Einladungscode (z. B. abcDEF):</label>
+    <input type="text" id="discordlink" name="discordlink" required>
+
+    <label for="verantwortlich">Wer ist die hauptverantwortliche Person?</label>
+    <input type="text" id="verantwortlich" name="verantwortlich" required>
 
     <button type="submit">Absenden</button>
   </form>
 
-  <script>
-    const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
-
-    document.getElementById("bewerbungForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const spielname = this.spielname.value.trim();
-      const spiellink = this.spiellink.value.trim();
-      const discordlink = this.discordlink.value.trim();
-      const verantwortlich = this.verantwortlich.value.trim();
-
-      if (!name || !motivation) {
-        alert("Bitte fülle alle Pflichtfelder aus.");
-        return;
-      }
-
-      const payload = {
-  content: `📥 **Neue Bewerbung eingegangen!**
-**👤 Name:** ${name}
-**📝 Motivation:** ${motivation}
-**🔧 Erfahrung:** ${erfahrung || "Keine Angabe"}
-**🎮 Roblox-Spiel:** ${spielname}
-**🔗 Spiel-Link:** ${spiellink}
-**💬 Discord:** ${discordlink}
-**👑 Ansprechpartner:** ${verantwortlich}`
-};
-
-      fetch(webhookURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      })
-      .then(() => {
-        alert("✅ Bewerbung erfolgreich gesendet!");
-        this.reset();
-      })
-      .catch(() => {
-        alert("❌ Fehler beim Senden. Bitte versuche es später erneut.");
-      });
-    });
-  </script>
-
+  <script src="js/bewerben.js"></script>
 </body>
 </html>
