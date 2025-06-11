@@ -5,70 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bewerbung – BlueLight Connect</title>
   <link rel="stylesheet" href="style/bewerben.css" />
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
   <main>
     <h1>Bewerbung – BlueLight Connect</h1>
 
     <form id="bewerbungForm">
-      <!-- SPIELINFOS -->
-      <fieldset>
-        <legend>🧩 Grundinfos</legend>
-        <label>Wie heißt das Roblox-Spiel?
-          <input type="text" name="gamename" required />
-        </label>
-        <label>Link zum Roblox-Spiel
-          <input type="text" name="spiellink" placeholder="z. B. https://www.roblox.com/de/games/..." required />
-        </label>
-        <label>Link zum Discord Server
-          <input type="text" name="discordlink" placeholder="z. B. https://discord.gg/..." required />
-        </label>
-        <label>Wer ist die Hauptverantwortliche Person für das Game?
-          <input type="text" name="ansprecher" required />
-        </label>
-      </fieldset>
+      <!-- Seite 1: Grundinfos -->
+      <div id="seite1">
+        <fieldset>
+          <legend>🧩 Grundinfos</legend>
+          <label>Wie heißt das Roblox-Spiel?
+            <input type="text" name="gamename" required />
+          </label>
+          <label>Link zum Roblox-Spiel
+            <input type="text" name="spiellink" placeholder="z. B. https://www.roblox.com/de/games/..." required />
+          </label>
+          <label>Link zum Discord Server
+            <input type="text" name="discordlink" placeholder="z. B. https://discord.gg/..." required />
+          </label>
+          <label>Wer ist die Hauptverantwortliche Person für das Game?
+            <input type="text" name="ansprecher" required />
+          </label>
+        </fieldset>
+        <button type="button" id="weiterBtn">Nächste Seite</button>
+      </div>
 
-<!-- NÄCHSTE SEITE -->
-  <button type="submit">nächste Seite</button>
-</form>
+      <!-- Seite 2: Weitere Angaben -->
+      <div id="seite2" class="hidden">
+        <fieldset>
+          <legend>📋 Weitere Angaben</legend>
+          <label>Seit wann existiert das Spiel?
+            <input type="text" name="zeit" placeholder="z. B. Januar 2024" required />
+          </label>
+          <label>Was zeichnet euer Game besonders aus?
+            <input type="text" name="eigenschaften" required />
+          </label>
+          <label>Region (z. B. NRW, Süddeutschland ...)
+            <input type="text" name="region" required />
+          </label>
+          <label>Zielgruppen
+            <input type="text" name="zielgruppen" placeholder="z. B. Realistische Spielweise" required />
+          </label>
+          <label>Besonderheiten
+            <input type="text" name="besonderheit" placeholder="z. B. eigene Leitstelle, Realfunk, usw." required />
+          </label>
+          <label>Mitgliederanzahl auf dem Discord
+            <input type="number" name="mitgliederanzahl" required />
+          </label>
+          <label>Social-Media-Links
+            <input type="text" name="social" placeholder="Instagram, TikTok, usw." required />
+          </label>
+          <label>Kurzbeschreibung
+            <textarea name="beschreibung" rows="5" required></textarea>
+          </label>
+        </fieldset>
+        <button type="button" id="zurueckBtn">Zurück</button>
+        <button type="submit">Bewerbung absenden</button>
+      </div>
+    </form>
+  </main>
 
-<!-- DETAILS -->
-      <fieldset>
-        <legend>📋 Weitere Angaben</legend>
-        <label>Seit wann existiert das Spiel?
-          <input type="text" name="zeit" placeholder="z. B. Januar 2024" required />
-        </label>
-        <label>Was zeichnet euer Game besonders aus?
-          <input type="text" name="eigenschaften" required />
-        </label>
-        <label>Region (z. B. NRW, Süddeutschland ...)
-          <input type="text" name="region" required />
-        </label>
-        <label>Zielgruppen
-          <input type="text" name="zielgruppen" placeholder="z. B. Realistische Spielweise" required />
-        </label>
-        <label>Besonderheiten
-          <input type="text" name="besonderheit" placeholder="z. B. eigene Leitstelle, Realfunk, usw." required />
-        </label>
-        <label>Mitgliederanzahl auf dem Discord
-          <input type="number" name="mitgliederanzahl" required />
-        </label>
-        <label>Social-Media-Links
-          <input type="text" name="social" placeholder="Instagram, TikTok, usw." required />
-        </label>
-        <label>Kurzbeschreibung
-          <textarea name="beschreibung" rows="5" required></textarea>
-        </label>
-      </fieldset>
-
-<!-- ZURÜCK -->
-  <button type="submit">Zurück</button>
-</form>
-    
-<!-- ABSENDEN -->
-  <button type="submit">Bewerbung absenden</button>
-</form>
-
-  <script src="bewerben.js"></script>
+  <script src="js/bewerben.js"></script>
 </body>
 </html>
