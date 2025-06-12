@@ -1,57 +1,66 @@
-const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
-
 const form = document.getElementById("bewerbungForm");
 const seite1 = document.getElementById("seite1");
 const seite2 = document.getElementById("seite2");
-const weiterBtn = document.getElementById("weiterBtn");
-const zurueckBtn = document.getElementById("zurueckBtn");
+const weiterBtn = document.getElementById("weiter");
+const zurueckBtn = document.getElementById("zurueck");
 
 weiterBtn.addEventListener("click", () => {
-  // Prüfen ob alle Felder von Seite 1 ausgefüllt sind
-  const fields = seite1.querySelectorAll("input");
-  for (let field of fields) {
-    if (!field.value.trim()) {
-      alert("Bitte fülle alle Felder aus.");
-      return;
-    }
+  const { gamename, spiellink, discordlink, ansprecher } = form;
+
+  if (
+    !gamename.value.trim() ||
+    !spiellink.value.trim() ||
+    !discordlink.value.trim() ||
+    !ansprecher.value.trim()
+  ) {
+    alert("Bitte alle Felder auf dieser Seite ausfüllen.");
+    return;
   }
-  seite1.classList.add("hidden");
-  seite2.classList.remove("hidden");
+
+  seite1.style.display = "none";
+  seite2.style.display = "block";
 });
 
 zurueckBtn.addEventListener("click", () => {
-  seite2.classList.add("hidden");
-  seite1.classList.remove("hidden");
+  seite2.style.display = "none";
+  seite1.style.display = "block";
 });
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const data = new FormData(form);
-  const content = `📥 **Neue Bewerbung eingegangen!**
-Spielname: ${data.get("gamename")}
-Spiellink: ${data.get("spiellink")}
-Discord: ${data.get("discordlink")}
-Ansprechpartner: ${data.get("ansprecher")}
-Erscheinung: ${data.get("zeit")}
-Eigenschaften: ${data.get("eigenschaften")}
-Region: ${data.get("region")}
-Zielgruppen: ${data.get("zielgruppen")}
-Besonderheiten: ${data.get("besonderheit")}
-Mitgliederanzahl: ${data.get("mitgliederanzahl")}
-Social Media: ${data.get("social")}
-Beschreibung: ${data.get("beschreibung")}`;
+  const getValue = (name) => form[name].value.trim();
 
-  fetch(webhookURL, {
+  const payload = {
+    content: `📥 **Neue Bewerbung eingegangen!**
+**Spielname:** ${getValue("gamename")}
+**Spiellink:** ${getValue("spiellink")}
+**Discord:** ${getValue("discordlink")}
+**Ansprechpartner:** ${getValue("ansprecher")}
+**Erscheinung:** ${getValue("zeit")}
+**Eigenschaften:** ${getValue("eigenschaften")}
+**Region:** ${getValue("region")}
+**Zielgruppen:** ${getValue("zielgruppen")}
+**Besonderheiten:** ${getValue("besonderheit")}
+**Mitgliederanzahl:** ${getValue("mitgliederanzahl")}
+**Social Media:** ${getValue("social")}
+**Beschreibung:** ${getValue("beschreibung")}`
+  };
+
+  fetch("/api/bewerbung", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content })
-  }).then(() => {
-    alert("✅ Bewerbung erfolgreich gesendet!");
-    form.reset();
-    seite2.classList.add("hidden");
-    seite1.classList.remove("hidden");
-  }).catch(() => {
-    alert("❌ Fehler beim Senden an Discord.");
-  });
+    body: JSON.stringify(payload)
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Fehler beim Senden");
+      alert("✅ Bewerbung erfolgreich übermittelt!");
+      form.reset();
+      seite1.style.display = "block";
+      seite2.style.display = "none";
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("❌ Fehler beim Absenden. Bitte später erneut versuchen.");
+    });
 });
