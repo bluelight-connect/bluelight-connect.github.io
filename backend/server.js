@@ -1,33 +1,58 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const cors = require("cors");
-const path = require("path");
+import express from 'express';
+import axios from 'axios';
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/DEIN_WEBHOOK_HIER";
+// === CONFIG ===
+const CLIENT_ID = '1383041041749512253';
+const CLIENT_SECRET = 'DEIN_CLIENT_SECRET';
+const REDIRECT_URI = 'https://bluelight-connect-backend.onrender.com/callback';
 
-app.use(express.static(path.join(__dirname, "../public")));
+// === ROUTES ===
+app.get('/callback', async (req, res) => {
+  const code = req.query.code;
+  if (!code) return res.send('Kein Code erhalten');
 
-app.post("/api/bewerbung", async (req, res) => {
   try {
-    const payload = req.body;
-    const response = await fetch(DISCORD_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    // Token von Discord holen
+    const tokenRes = await axios.post(
+      'https://discord.com/api/oauth2/token',
+      new URLSearchParams({
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_SECRET,
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: REDIRECT_URI,
+        scope: 'identify guilds email guilds.join',
+      }),
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      }
+    );
+
+    const access_token = tokenRes.data.access_token;
+
+    // Benutzerinfo holen
+    const userRes = await axios.get('https://discord.com/api/users/@me', {
+      headers: { Authorization: `Bearer ${access_token}` },
     });
-    if (!response.ok) return res.status(500).send("Webhook-Fehler");
-    res.sendStatus(200);
+
+    res.send(`
+      <h1>Willkommen, ${userRes.data.username}#${userRes.data.discriminator}!</h1>
+      <p>Deine Discord-ID: ${userRes.data.id}</p>
+    `);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Serverfehler");
+    res.send('Ein Fehler ist aufgetreten.');
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server läuft auf http://localhost:${PORT}`);
+app.get('/', (req, res) => {
+  res.send('<h1>Bluelight Backend läuft!</h1>');
 });
+
+app.listen(PORT, () => {
+  console.log(`Server läuft auf Port ${PORT}`);
+});
+
