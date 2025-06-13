@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 // === CONFIG ===
 const CLIENT_ID = '1383041041749512253';
-const CLIENT_SECRET = '3831932';
+const CLIENT_SECRET = '1383041041749512253';
 const REDIRECT_URI = 'https://bluelight-connect-backend.onrender.com/callback';
 
 // === ROUTES ===
