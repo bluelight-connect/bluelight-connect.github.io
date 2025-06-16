@@ -1,31 +1,70 @@
-.form-page {
-  max-width: 600px;
-  margin: 5rem auto;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
   color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-form input, form button {
-  display: block;
+.form-page {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+form input,
+form button {
   width: 100%;
-  margin: 0.5rem 0;
   padding: 0.8rem;
+  margin: 0.5rem 0;
   border-radius: 10px;
   border: none;
   font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form input {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+form input::placeholder {
+  color: #ddd;
 }
 
 form button {
-  background: #1d72ff;
+  background-color: #1d72ff;
   color: white;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 form button:hover {
-  background: #155ecb;
+  background-color: #155ecb;
 }
+
+a {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
 
