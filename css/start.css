@@ -29,23 +29,11 @@ header p {
   margin-top: 20px;
 }
 
-.btn {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 25px;
-  border-radius: 12px;
-  font-weight: 600;
-  background: white;
-  color: #4f46e5;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
 .btn:hover {
   transform: scale(1.10);
 }
 
-.btn.bewerben {
+.btn {
   background: transparent;
   border: 2px solid white;
   color: white;
