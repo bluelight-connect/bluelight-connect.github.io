@@ -2,31 +2,35 @@
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
-  background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
   color: white;
-  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Hero Section */
-.hero {
+.oben {
   text-align: center;
   padding: 100px 20px;
   backdrop-filter: blur(15px);
   background: rgba(255, 255, 255, 0.05);
 }
 
-.hero h1 {
+.oben h1 {
   font-size: 3rem;
   font-weight: 500;
   margin-bottom: 0.5em;
 }
 
-.hero p {
+.oben p {
   font-weight: 300;
   font-size: 1.2rem;
 }
 
-.hero-buttons .btn {
+.oben-buttons .liste {
   display: inline-block;
   margin: 10px;
   padding: 12px 25px;
@@ -38,14 +42,14 @@ body {
   transition: transform 0.2s ease;
 }
 
-.btn.outline {
+.bewerben {
   background: transparent;
   border: 2px solid white;
   color: white;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 /* Serverliste */
@@ -53,6 +57,7 @@ body {
   padding: 60px 20px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
 .server-grid {
@@ -60,6 +65,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
 .server-card {
