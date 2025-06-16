@@ -11,7 +11,7 @@ body {
   text-align: center;
 }
 
-/* Hero Section */
+/* Oberes Section */
 .oben {
   text-align: center;
   padding: 100px 20px;
@@ -60,7 +60,7 @@ body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
-.server-grid {
+.server-gesamt {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
@@ -68,7 +68,7 @@ body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
-.server-card {
+.server-einzeln {
   background: rgba(255, 255, 255, 0.15);
   padding: 20px;
   border-radius: 20px;
@@ -76,38 +76,6 @@ body {
   transition: transform 0.2s ease;
 }
 
-.server-card:hover {
+.server-einzeln:hover {
   transform: translateY(-5px);
-}
-
-/* Bewerbungsformular */
-form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-}
-
-input, textarea, button {
-  border: none;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 1rem;
-}
-
-button {
-  background: white;
-  color: #4f46e5;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.2);
 }
