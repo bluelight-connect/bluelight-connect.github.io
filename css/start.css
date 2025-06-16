@@ -15,9 +15,12 @@ header.oben {
 }
 
 header h1 {
-  font-size: 3rem;
-  font-weight: 500;
-  margin-bottom: 0.5em;
+  position: absolute;
+  top: 1px;
+  left: 140px;
+  font-weight: 1000;
+  font-size: 3.3rem;
+  margin-bottom: 0.1em;
 }
 
 header .logo {
