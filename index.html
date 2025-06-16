@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Bluelight Connect</title>
-  <link rel="stylesheet" href="css/start.css">
-  <link rel="icon" type="image/png" href="image/BluelightConnect.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox RP Discord Liste</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="image/BluelightConnectBanner.png">
-  <h1>BLUELIGHT CONNECT</h1>
+  <header class="hero">
+    <h1>Finde deinen Roblox RP Discord Server</h1>
+    <p>Die zentrale Plattform für Roblox RP Communitys</p>
+    <div class="hero-buttons">
+      <a href="#liste" class="btn">Server entdecken</a>
+      <a href="#bewerbung" class="btn outline">Server eintragen</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="liste" class="server-liste">
+      <h2>📋 Serverliste</h2>
+      <div class="server-grid">
+        <!-- Beispiel-Card -->
+        <div class="server-card">
+          <h3>CityLife RP</h3>
+          <p>Ein realistischer Stadt-RP Server mit Polizei, Job-System u.v.m.</p>
+          <a href="https://discord.gg/beispiel" target="_blank">Beitreten</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="bewerbung">
+      <h2>📝 Server eintragen</h2>
+      <form>
+        <input type="text" placeholder="Servername" required>
+        <input type="url" placeholder="Discord Invite Link" required>
+        <textarea placeholder="Kurze Beschreibung" required></textarea>
+        <button type="submit">Einreichen</button>
+      </form>
+    </section>
+
+    <footer>
+      <p><a href="#impressum">Impressum</a> – Roblox RP Discord Plattform © 2025</p>
+    </footer>
+  </main>
 </body>
 </html>
+
