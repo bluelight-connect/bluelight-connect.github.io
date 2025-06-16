@@ -20,6 +20,15 @@ header h1 {
   margin-bottom: 0.5em;
 }
 
+header logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
 header p {
   font-weight: 300;
   font-size: 1.2rem;
