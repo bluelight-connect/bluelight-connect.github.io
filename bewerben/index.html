@@ -2,15 +2,72 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bewerbung – BlueLight Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Server bewerben – Roblox RP</title>
+  <link rel="stylesheet" href="css/start.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="image/BluelightConnect.png">
 </head>
 <body>
-  <main>
-    <h1>Bewerbung – BlueLight Connect</h1>
+  <div class="form-page">
+    <h1>🔗 Server einreichen</h1>
+    <p>Trage deinen Roblox RP Discord Server ein. Die Infos werden direkt an unser Moderationsteam übermittelt.</p>
 
-  </main>
+    <form id="webhookForm">
+      <input type="text" id="servername" placeholder="Servername" required>
+      <input type="url" id="invite" placeholder="Discord Invite Link" required>
+      <input type="text" id="beschreibung" placeholder="Kurze Beschreibung" required>
+      <button type="submit">Absenden</button>
+    </form>
 
-  <script src="bewerben.js"></script>
+    <p><a href="index.html">Zurück zur Startseite</a></p>
+  </div>
+
+  <script>
+    const webhookURL = "https://discord.com/api/webhooks/1381811213494915112/xWBlig7TN9vZzwNlBJzLFW23caCLACJp9ZYdBGZP7CV1syxjdh8pd_C-XEYN25pb-WT6";
+
+    document.getElementById("webhookForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const servername = document.getElementById("servername").value;
+      const invite = document.getElementById("invite").value;
+      const beschreibung = document.getElementById("beschreibung").value;
+
+      const payload = {
+        content: "**📨 Neuer Servereintrag erhalten!**",
+        embeds: [{
+          title: servername,
+          description: beschreibung,
+          color: 0x3498db,
+          fields: [
+            {
+              name: "Invite Link",
+              value: invite
+            }
+          ]
+        }]
+      };
+
+      try {
+        const response = await fetch(webhookURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          alert("Server erfolgreich eingereicht!");
+          document.getElementById("webhookForm").reset();
+        } else {
+          alert("Fehler beim Einreichen. Bitte später erneut versuchen.");
+        }
+      } catch (error) {
+        alert("Verbindungsfehler zum Discord Webhook.");
+        console.error(error);
+      }
+    });
+  </script>
 </body>
 </html>
