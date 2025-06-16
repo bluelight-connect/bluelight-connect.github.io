@@ -34,7 +34,14 @@ header p {
 }
 
 .btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-weight: 600;
   background: transparent;
+  text-decoration: none;
+  transition: transform 0.2s ease;
   border: 2px solid white;
   color: white;
 }
