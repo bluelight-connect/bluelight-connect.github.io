@@ -7,16 +7,21 @@ body {
   text-align: center;
 }
 
+oben {
+  top: 20px;  
+}
+
 header.oben {
   text-align: center;
-  padding: 100px 20px;
-  backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.05);
+  top: 60px;
+  padding: 30px 20px;
+  backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 header h1 {
   position: absolute;
-  top: 1px;
+  top: 5px;
   left: 140px;
   font-weight: 1000;
   font-size: 3.3rem;
@@ -30,11 +35,6 @@ header .logo {
   width: 100px;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-header p {
-  font-weight: 300;
-  font-size: 1.2rem;
 }
 
 .oben-buttons {
@@ -87,7 +87,7 @@ main.haupt {
 }
 
 .server-einzeln:hover {
-  transform: scale(1.03);
+  transform: scale(1.06);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -104,5 +104,5 @@ main.haupt {
 }
 
 .serverbutton:hover {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
