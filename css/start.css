@@ -34,18 +34,11 @@ header .logo {
     margin-right: 15px;
 }
 
-.oben-buttons {
+.btn {
     margin-top: 0;
     display: flex;
     gap: 15px;
     align-items: center;
-}
-
-.btn:hover {
-    transform: scale(1.10);
-}
-
-.btn {
     display: inline-block;
     margin: 0;
     padding: 10px 30px;
@@ -57,6 +50,10 @@ header .logo {
     border: 1px solid white;
     font-size: 1rem;
     color: white;
+}
+
+.btn:hover {
+    transform: scale(1.10);
 }
 
 main.haupt {
