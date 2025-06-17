@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     font-family: 'Rubik', sans-serif;
@@ -7,7 +8,7 @@ body {
     text-align: center;
 }
 
-header {
+.oben{
     padding: 30px 15px;
     backdrop-filter: blur(1px);
     background: rgba(255, 255, 255, 0.25);
@@ -17,7 +18,7 @@ header {
     flex-wrap: wrap;
 }
 
-header h1 {
+.title {
     position: static;
     font-weight: 1000;
     font-size: 2.5rem;
@@ -26,7 +27,7 @@ header h1 {
     text-align: left;
 }
 
-header .logo {
+.logo {
     position: static;
     width: 80px;
     border-radius: 12px;
@@ -56,19 +57,13 @@ header .logo {
     transform: scale(1.10);
 }
 
-main.haupt {
+.server-gesamt {
     padding: 40px 15px;
-}
-
-.server-liste {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     padding: 30px 15px;
-    border-radius: 20px;
-}
-
-.server-gesamt {
+    border-radius: 20px;    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
